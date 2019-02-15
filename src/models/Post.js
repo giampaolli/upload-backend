@@ -27,7 +27,7 @@ PostSchema.pre("remove", function() {
   if (process.env.STORAGE_TYPE === "s3") {
     return s3
       .deleteObject({
-        Bucket: "upload-giampaoli",
+        Bucket: process.env.AWS_S3_BUCKET,
         Key: this.key
       })
       .promise();
